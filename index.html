@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyFlow - Student Study Planner</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#7c3aed">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">S</div>
+
+            <div>
+                <h2>StudyFlow</h2>
+                <span>STUDENT PLANNER</span>
+            </div>
+
+        </div>
+
+        <p class="nav-heading">MENU</p>
+
+        <nav class="navigation">
+
+            <a href="#dashboard" class="nav-link active">
+                <span>▦</span>
+                Dashboard
+            </a>
+
+            <a href="#add-task" class="nav-link">
+                <span>＋</span>
+                Add Study Task
+            </a>
+
+            <a href="#my-tasks" class="nav-link">
+                <span>☑</span>
+                My Tasks
+            </a>
+
+            <a href="#today-section" class="nav-link">
+                <span>◷</span>
+                Today's Tasks
+            </a>
+
+            <a href="#exam-section" class="nav-link">
+                <span>▣</span>
+                Exams
+            </a>
+
+            <a href="#progress-section" class="nav-link">
+                <span>▤</span>
+                Progress
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="quote-card">
+
+                <div class="quote-icon">✦</div>
+
+                <h3>Keep Going!</h3>
+
+                <p>
+                    Small progress every day leads to big results.
+                </p>
+
+            </div>
+
+            <p class="sidebar-footer">
+                StudyFlow © 2026
+            </p>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- HEADER -->
+
+        <header class="top-header" id="dashboard">
+
+            <div>
+
+                <p class="welcome-label">
+                    YOUR PERSONAL WORKSPACE
+                </p>
+
+                <h1>
+                    Welcome to your Study Planner 👋
+                </h1>
+
+                <p class="header-description">
+                    Organize your studies, track your progress and achieve your goals.
+                </p>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <div class="date-box">
+
+                    <span>📅</span>
+
+                    <div id="currentDate"></div>
+
+                </div>
+
+
+                <!-- DARK MODE BUTTON -->
+
+                <button
+                    type="button"
+                    id="themeToggle"
+                    class="theme-toggle"
+                >
+                    🌙 Dark Mode
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- DASHBOARD STATISTICS -->
+
+        <section class="dashboard">
+
+
+            <!-- TOTAL TASKS -->
+
+            <div class="card stat-card purple-card">
+
+                <div class="stat-top">
+
+                    <span>Total Tasks</span>
+
+                    <div class="stat-icon purple-icon">
+                        ▤
+                    </div>
+
+                </div>
+
+                <h2 id="totalTasks">0</h2>
+
+                <p>All your study activities</p>
+
+            </div>
+
+
+
+            <!-- COMPLETED TASKS -->
+
+            <div class="card stat-card green-card">
+
+                <div class="stat-top">
+
+                    <span>Completed</span>
+
+                    <div class="stat-icon green-icon">
+                        ✓
+                    </div>
+
+                </div>
+
+                <h2 id="completedTasks">0</h2>
+
+                <p>Tasks successfully finished</p>
+
+            </div>
+
+
+
+            <!-- PENDING TASKS -->
+
+            <div class="card stat-card orange-card">
+
+                <div class="stat-top">
+
+                    <span>Pending</span>
+
+                    <div class="stat-icon orange-icon">
+                        ◷
+                    </div>
+
+                </div>
+
+                <h2 id="pendingTasks">0</h2>
+
+                <p>Tasks waiting for you</p>
+
+            </div>
+
+
+
+            <!-- PROGRESS -->
+
+            <div class="card stat-card blue-card">
+
+                <div class="stat-top">
+
+                    <span>Progress</span>
+
+                    <div class="stat-icon blue-icon">
+                        ↗
+                    </div>
+
+                </div>
+
+                <h2 id="progress">0%</h2>
+
+                <p>Your overall completion</p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ADD STUDY TASK -->
+
+        <section class="section" id="add-task">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        GET ORGANIZED
+                    </span>
+
+                    <h2>Create a Study Task</h2>
+
+                    <p>
+                        Add your next learning activity to your planner.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ✚
+                </div>
+
+            </div>
+
+
+            <form id="taskForm" class="task-form">
+
+
+                <div class="form-group">
+
+                    <label for="taskName">
+                        Task Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="taskName"
+                        placeholder="e.g. Complete Java OOP"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        placeholder="e.g. Java Programming"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="taskDate">
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="taskDate"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="priority">
+                        Priority
+                    </label>
+
+                    <select id="priority">
+
+                        <option value="Low">
+                            Low Priority
+                        </option>
+
+                        <option value="Medium" selected>
+                            Medium Priority
+                        </option>
+
+                        <option value="High">
+                            High Priority
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <button type="submit" class="primary-btn">
+                    + Add Task
+                </button>
+
+
+            </form>
+
+        </section>
+
+
+
+        <!-- MY STUDY TASKS -->
+
+        <section class="section" id="my-tasks">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        YOUR WORKSPACE
+                    </span>
+
+                    <h2>My Study Tasks</h2>
+
+                    <p>
+                        Manage your daily learning activities.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ☑
+                </div>
+
+            </div>
+
+
+
+            <!-- SEARCH AND FILTER -->
+
+            <div class="task-tools">
+
+
+                <input
+                    type="search"
+                    id="searchTask"
+                    placeholder="🔍 Search tasks or subjects..."
+                >
+
+
+                <div class="filters">
+
+                    <label for="filterStatus">
+                        Filter:
+                    </label>
+
+                    <select id="filterStatus">
+
+                        <option value="all">
+                            All Tasks
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TASKS DISPLAY -->
+
+            <div id="taskList">
+
+                <p class="empty">
+                    No tasks added yet!
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- TODAY'S STUDY TASKS -->
+
+        <section class="section" id="today-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        STAY ON TRACK
+                    </span>
+
+                    <h2>Today's Study Tasks</h2>
+
+                    <p>
+                        Focus on what you need to complete today.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ◷
+                </div>
+
+            </div>
+
+
+
+            <div id="todayTasks">
+
+                <p class="empty">
+                    No tasks scheduled for today!
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- OVERALL STUDY PROGRESS -->
+
+        <section class="section" id="progress-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        YOUR ACHIEVEMENTS
+                    </span>
+
+                    <h2>Overall Study Progress</h2>
+
+                    <p>
+                        Every completed task takes you one step forward.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ↗
+                </div>
+
+            </div>
+
+
+
+            <div class="progress-container">
+
+
+                <div class="progress-info">
+
+                    <span>Completed Tasks</span>
+
+                    <strong id="progressText">
+                        0%
+                    </strong>
+
+                </div>
+
+
+
+                <div class="progress-bar">
+
+                    <div id="progressFill"></div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- EXAM COUNTDOWN -->
+
+        <section class="section" id="exam-section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        BE EXAM READY
+                    </span>
+
+                    <h2>Exam Countdown</h2>
+
+                    <p>
+                        Keep track of your upcoming examinations.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    🎯
+                </div>
+
+            </div>
+
+
+
+            <!-- ADD EXAM FORM -->
+
+            <form id="examForm" class="exam-form">
+
+
+                <div class="form-group">
+
+                    <label for="examName">
+                        Exam Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="examName"
+                        placeholder="e.g. Data Structures Exam"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="examDate">
+                        Exam Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="examDate"
+                        required
+                    >
+
+                </div>
+
+
+
+                <button type="submit" class="primary-btn">
+                    + Add Exam
+                </button>
+
+
+            </form>
+
+
+
+            <!-- EXAM LIST -->
+
+            <div id="examList">
+
+                <p class="empty">
+                    No exams added yet!
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- NEXT UPCOMING EXAM -->
+
+        <section class="section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        COMING UP NEXT
+                    </span>
+
+                    <h2>Next Upcoming Exam</h2>
+
+                    <p>
+                        Your next important academic milestone.
+                    </p>
+
+                </div>
+
+                <div class="heading-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+
+            <div id="nextExam">
+
+                <p class="empty">
+                    No upcoming exams!
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                Made with ❤️ for productive students
+            </p>
+
+            <span>
+                StudyFlow · Stay Focused, Stay Consistent
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="script.js"></script>
+<script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(function () {
+                console.log("StudyFlow is ready for offline use!");
+            })
+            .catch(function (error) {
+                console.log("Service Worker Error:", error);
+            });
+    });
+}
+</script>
+
+</body>
+
+</html>
