@@ -1,0 +1,19 @@
+{
+  "name": "StudyFlow - Student Study Planner",
+  "short_name": "StudyFlow",
+  "description": "Organize your studies and track your progress.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#7c3aed",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
